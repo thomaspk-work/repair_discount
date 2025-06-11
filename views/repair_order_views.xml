@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="view_repair_order_form_inherit" model="ir.ui.view">
+            <field name="name">repair.order.form.inherit.discount</field>
+            <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='line_ids']/form/sheet" position="inside">
+                    <field name="discount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                </xpath>
+                <xpath expr="//field[@name='line_ids']/form/sheet" position="before">
+                    <field name="discount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_repair_order_tree_inherit" model="ir.ui.view">
+            <field name="name">repair.order.tree.inherit.discount</field>
+            <field name="model">repair.order</field>
+            <field name="inherit_id" ref="repair.view_repair_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="inside">
+                    <field name="discount" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
