@@ -1,26 +1,35 @@
 <odoo>
     <data>
-        <record id="view_repair_order_form_inherit" model="ir.ui.view">
-            <field name="name">repair.order.form.inherit.discount</field>
+        <!-- Parts Tab (operations) -->
+        <record id="view_repair_order_form_line_discount" model="ir.ui.view">
+            <field name="name">repair.order.form.line.discount</field>
             <field name="model">repair.order</field>
             <field name="inherit_id" ref="repair.view_repair_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//field[@name='line_ids']/form/sheet" position="inside">
-                    <field name="discount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                <!-- Form View -->
+                <xpath expr="//field[@name='operations']//field[@name='tax_id']" position="before">
+                    <field name="discount" string="Discount (%)"/>
                 </xpath>
-                <xpath expr="//field[@name='line_ids']/form/sheet" position="before">
-                    <field name="discount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                <!-- Tree View -->
+                <xpath expr="//field[@name='operations']//tree//field[@name='tax_id']" position="before">
+                    <field name="discount" string="Discount (%)"/>
                 </xpath>
             </field>
         </record>
 
-        <record id="view_repair_order_tree_inherit" model="ir.ui.view">
-            <field name="name">repair.order.tree.inherit.discount</field>
+        <!-- Operations Tab (fees_lines) -->
+        <record id="view_repair_order_form_fee_discount" model="ir.ui.view">
+            <field name="name">repair.order.form.fee.discount</field>
             <field name="model">repair.order</field>
-            <field name="inherit_id" ref="repair.view_repair_order_tree"/>
+            <field name="inherit_id" ref="repair.view_repair_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree" position="inside">
-                    <field name="discount" />
+                <!-- Form View -->
+                <xpath expr="//field[@name='fees_lines']//field[@name='tax_id']" position="before">
+                    <field name="discount" string="Discount (%)"/>
+                </xpath>
+                <!-- Tree View -->
+                <xpath expr="//field[@name='fees_lines']//tree//field[@name='tax_id']" position="before">
+                    <field name="discount" string="Discount (%)"/>
                 </xpath>
             </field>
         </record>
