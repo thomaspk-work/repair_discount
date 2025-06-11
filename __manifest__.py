@@ -11,5 +11,6 @@
     ],
     "installable": True,
     "application": False,
-    "auto_install": False
+    "auto_install": False,
+    "technical_name": "repair_discount",
 }
